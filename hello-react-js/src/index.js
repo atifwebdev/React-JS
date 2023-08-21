@@ -1,15 +1,114 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import ReactDOM from 'react-dom';
+import { useState } from 'react';
+import "./index.css";
+import img1 from './img/car1.png';
+import img2 from './img/car2.png';
+import img3 from './img/car3.png';
+import bulb1 from './img/light-bulb-off.png';
+import bulb2 from './img/light-bulb-on.png';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// function Hi() {
+//   return <div>Hello World!</div>;
+// }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// ReactDOM.render(<Hi/>, document.querySelector('#root'));
+
+
+// function Card() {
+//   return <div className='cardBox'>
+//     <h2>Heading</h2>
+//     <p>Description text here</p>
+//     <img src={car1}></img>
+//   </div>;
+// }
+
+// ReactDOM.render(<Card/>, document.querySelector('#root'));
+
+
+// Passing Data through props
+// function Card(props) {
+//   return <div className='cardBox'>
+//     <h2>{props.heading}</h2>
+//     <p>{props.description}</p>
+//     <img src={props.imgUrl}></img>
+//   </div>;
+// }
+
+// ReactDOM.render( <div>
+// <Card heading={"Test Heading Prop 1"} description={"This is some text here..."} imgUrl={img1} /> 
+// <Card heading={"Test Heading Prop 2"} description={"This is some text here..."} imgUrl={img2} />
+// <Card heading={"Test Heading Prop 3"} description={"This is some text here..."} imgUrl={img3} />
+// </div>, document.querySelector('#root'));
+
+
+// Arrow Functions, use small brakets, ternory operators
+// let Card = ({ heading, description, imgUrl }) => (
+//   <div className='cardBox'>
+//     <h2>{heading}</h2>
+//     <p>{description}</p>
+//     {
+//       (imgUrl) ? <img width={300} src={imgUrl}></img> : null
+//     }
+//   </div>
+// )
+
+// ReactDOM.render( <div>
+// <Card heading={"Test Heading Prop 1"} description={"This is some text here..."} imgUrl={img1} /> 
+// <Card heading={"Test Heading Prop 2"} description={"This is some text here..."} imgUrl={img2} />
+// <Card heading={"Test Heading Prop 3"} description={"This is some text here..."} />
+// </div>, document.querySelector('#root'));
+
+
+
+
+
+
+// State in React JS
+// let Room = () => {
+//   const [isLit, setLit] = useState(true);
+//   return (
+//     <div className={`room ${isLit ? "lit" : "dark"}`}>
+//       the room is { isLit ? 'lit' : 'dark'}
+//       <br />
+//       <button onClick={() => setLit(!isLit)}>
+//         flip
+//       </button>
+//     </div>
+//   );
+// }
+
+// ReactDOM.render(<Room />, document.getElementById('root'));
+
+
+
+// Bulb ON/OFF using State
+// let Bulb = () => {
+//   const [isOn, setOn] = useState(true);
+//   return (
+//     <div className="bulBox">
+//       <img src={ isOn ? bulb1 : bulb2 }></img>
+//       <br></br>
+//       <button onClick={() => setOn(!isOn)}>{ (isOn) ? "On" : "Off" }</button>
+//     </div>
+//   );
+// }
+
+// ReactDOM.render(<Bulb />, document.getElementById('root'));
+
+
+let Bulb = () => {
+  const [isOn, setOn] = useState(1);
+  const [isOff, setOff] = useState(0);
+  return (
+    <div className="bulBox">
+      <img src={ isOn ? bulb1 : null }></img>
+      <img src={ isOff ? bulb2 : null }></img>
+      <br></br>
+      <button onClick={() => setOff(isOff === 1)}>Off</button>
+      <button onClick={() => setOn(isOn === 0)}>On</button>
+    </div>
+  );
+}
+
+ReactDOM.render(<Bulb />, document.getElementById('root'));
