@@ -98,15 +98,34 @@ import bulb2 from './img/light-bulb-on.png';
 
 
 let Bulb = () => {
-  const [isOn, setOn] = useState(1);
-  const [isOff, setOff] = useState(0);
+  const [isOn, setOn] = useState(true);
+  const [roomTemp, setRoomTemp] = useState(22);
+
+  const turnOff = () => {
+    setOn(true);
+  }
+
+  const turnOn = () => {
+    setOn(false);
+  }
+
+  const increaseTemp = () => {
+    setRoomTemp( addTemp => addTemp + 1 );
+  }
+
+  const decreaseTemp = () => {
+    setRoomTemp( minusTemp => minusTemp - 1 );
+  }
+
   return (
     <div className="bulBox">
-      <img src={ isOn ? bulb1 : null }></img>
-      <img src={ isOff ? bulb2 : null }></img>
+      <img width={300} src={ isOn ? bulb1 : bulb2 }></img>
       <br></br>
-      <button onClick={() => setOff(isOff === 1)}>Off</button>
-      <button onClick={() => setOn(isOn === 0)}>On</button>
+      <button onClick={turnOff}>Off</button>
+      <button onClick={turnOn}>On</button>
+      <h2>Room Temperature: {roomTemp}</h2>
+      <button onClick={increaseTemp}>+</button>
+      <button onClick={decreaseTemp}>-</button>
     </div>
   );
 }
